@@ -1,14 +1,15 @@
-
-document.getElementById("searchButton").addEventListener("click", function(){
+//Musiur alam Opu
+// eventHandler for search button
+document.getElementById("searchButton").addEventListener("click", function () {
     const inputText = document.getElementById("searchingName").value;
     console.log("Input Text is: " + inputText);
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + inputText)
-    .then(response => response.json())
-    .then(data => displayMeal(data))
-    .catch(err => alert("Could not find the: " + inputText + "\ndue to:\n" + err.message));
+        .then(response => response.json())
+        .then(data => displayMeal(data))
+        .catch(err => alert("Could not find the: " + inputText + "\ndue to:\n" + err.message));
 });
-
-function displayMeal(mealItems){
+// making divs for meal Items
+function displayMeal(mealItems) {
     const mealDivs = document.getElementById("mealItemsList");
     mealDivs.innerHTML = ``;
     ingredientsDetails.innerHTML = ``;
@@ -30,7 +31,8 @@ function displayMeal(mealItems){
         mealDivs.appendChild(mealDiv);
     });
 }
-const displayMealIngredients = mealID =>{
+//grabing the details of individual div that clicked by user with specific ID
+const displayMealIngredients = mealID => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`
     fetch(url)
         .then(res => res.json())
@@ -39,17 +41,18 @@ const displayMealIngredients = mealID =>{
         });
 
 }
+//pushing the ul items to and array
 const mealIngredientsDetailsAdd = mealItemName => {
     const mealDetailsNode = document.getElementById("ingredientsDetails");
     const mealIngredientsDetailsArray = [];
-    for(let i = 1; i <= 30; i++) {
-        if(mealItemName[`strIngredient${i}`]) {
+    for (let i = 1; i <= 30; i++) {
+        if (mealItemName[`strIngredient${i}`]) {
             mealIngredientsDetailsArray.push(`${mealItemName[`strMeasure${i}`]}-${mealItemName[`strIngredient${i}`]}`);
-        }else{
+        } else {
             break;
         }
     }
-
+    //making new div for Ingredients details
     mealDetailsNode.innerHTML = `
           <div id="ingredientsShowStage">
                 <div>
@@ -66,3 +69,4 @@ const mealIngredientsDetailsAdd = mealItemName => {
           </div>
            `;
 }
+/////////////------------finish---------------////////////////

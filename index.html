@@ -10,31 +10,45 @@
 </head>
 <body>
     <header>
+        <nav class="navbar navbar-blue bg-light">
+            <div id="navbarLeftPart">
 
+            </div>
+            <div id="navbarRightPart">
+                <a href="" class="links">Home</a>
+                <a href="" class="links">About</a>
+                <a href="" class="links">Recipes</a>
+                <a href="" class="links">Blog</a>
+            </div>
+          </nav>
     </header>
     <main>
+        <!-- searchbar section -->
         <section id="firstSection">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search Meal" id="searchingName">
+                <input type="text" class="form-control" placeholder="🔍 Search Meal" id="searchingName">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="searchButton">Button</button>
+                  <button class="btn btn-success" type="button" id="searchButton" style="background-color: orangered; border: none;">Search</button>
                 </div>
               </div>
               
         </section>
-        <section style="margin-left: 5%; margin-right: 5%;">
+        <!-- ingredientsDetails block-->
+        <section style="margin-left: 5%; margin-right: 5%;
+        padding-top: 30px;">
             <div id="ingredientsDetails">
 
             </div>
         </section>
+        <!-- showing meal items -->
         <section style="margin-left: 5%; margin-right: 5%;">
             <div id="mealItemsList">
 
             </div>
         </section>
     </main>
-    <footer>
-
+    <footer style="padding-top:100px;">
+        
     </footer>
     <script src="app.js"></script>
 </body>

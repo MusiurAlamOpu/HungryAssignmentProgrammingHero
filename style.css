@@ -1,5 +1,23 @@
+nav{
+    margin: 0% 10%;
+}
+
+#navbarLeftPart{
+    width: 70%;
+}
+#navbarRightPart{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    
+}
+.links{
+    text-decoration: none;
+    color: black;
+    margin: 0px 20px;
+}
+
 input{
-    text-align: center;
     margin: 10px 10px;
     border-radius: 5px;
 
@@ -7,7 +25,7 @@ input{
 #firstSection{
     margin-left: 35%;
     margin-right: 35%;
-    margin-top: 100px;
+    margin-top: 30px;
 }
 #mealItemsList{  
     display: grid;
@@ -19,10 +37,10 @@ input{
 .mealDivItems{
     margin: 1%;
     padding: 1%;
-    background-color: rgb(231, 231, 231);
     color: black;
     border-radius: 10px;
     text-align: center;
+    box-shadow: 3px 3px 10px grey;
 }
 
 .mealDivItems img{
@@ -41,4 +59,5 @@ input{
     width: 550px;
     height: 380px;
     border-radius: 20px;
+    box-shadow: 3px 3px 10px grey;
 }
