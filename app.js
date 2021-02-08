@@ -9,28 +9,57 @@ document.getElementById("searchButton").addEventListener("click", function(){
 });
 
 function displayMeal(mealItems){
-    // console.log("Length: " + mealItems.meals.length);
     const mealDivs = document.getElementById("mealItemsList");
     mealDivs.innerHTML = ``;
-    // for(let i = 0; i < mealItems.meals.length; i++) {
-    //     const meal = mealItems.meals[i];
-    //     const mealDiv = document.createElement("div");
-    //     mealDiv.className = "mealDivItems";
-    //     mealDiv.innerHTML = `
-    //         <h3>${meal.strMeal}</h3>
-    //     `;
-    //     console.log(meal.strMeal);
-    //     mealDivs.appendChild(mealDiv);
-    // }
     mealItems.meals.forEach(meal => {
         const mealDiv = document.createElement("div");
         mealDiv.className = "mealDivItems";
         mealDiv.innerHTML = `
-            <h3>${meal.strMeal}</h3>
-            <button class="mealDivElements>Ingradients</button>
+            <div onclick="displayMealIngredients('${meal.idMeal}')">
+                <div style="widht: 60px;">
+                <img src="${meal.strMealThumb}">
+                </div>
+                <div>
+                    <h3>${meal.strMeal}</h3>
+                </div>
+                
+            </div>     
         `;
         console.log(meal.strMeal);
         mealDivs.appendChild(mealDiv);
-        
     });
+}
+const displayMealIngredients = mealID =>{
+    console.log("you did click me!");
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            mealIngredientsDetailsAdd(data.meals[0]);
+        });
+
+}
+const mealIngredientsDetailsAdd = mealItemName => {
+    const mealDetailsNode = document.getElementById("ingredientsDetails");
+    const mealIngredientsDetailsArray = [];
+    for(let i = 1; i <= 30; i++) {
+        if(mealItemName[`strIngredient${i}`]) {
+            mealIngredientsDetailsArray.push(`${mealItemName[`strMeasure${i}`]}-${mealItemName[`strIngredient${i}`]}`);
+        }else{
+            break;
+        }
+    }
+
+    mealDetailsNode.innerHTML = `
+          <div>
+              <img src="${mealItemName.strMealThumb}" >
+              <div>
+                  <p><h4>${mealItemName.strMeal}</h4></p>
+                  <h5>Ingredients:</h5>
+                  <ul>
+                      ${mealIngredientsDetailsArray.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                  </ul>
+              </div>
+          </div>
+           `;
 }
