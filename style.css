@@ -30,6 +30,15 @@ input{
     height: 230px;
     border-radius:7px;
 }
-/* .mealDivItems button{
-    border-radius:7px;
-} */
+#ingredientsShowStage{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+}
+#ingredientsShowStage img{
+    width: 550px;
+    height: 380px;
+    border-radius: 20px;
+}

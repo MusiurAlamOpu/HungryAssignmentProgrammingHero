@@ -11,6 +11,7 @@ document.getElementById("searchButton").addEventListener("click", function(){
 function displayMeal(mealItems){
     const mealDivs = document.getElementById("mealItemsList");
     mealDivs.innerHTML = ``;
+    ingredientsDetails.innerHTML = ``;
     mealItems.meals.forEach(meal => {
         const mealDiv = document.createElement("div");
         mealDiv.className = "mealDivItems";
@@ -30,7 +31,6 @@ function displayMeal(mealItems){
     });
 }
 const displayMealIngredients = mealID =>{
-    console.log("you did click me!");
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`
     fetch(url)
         .then(res => res.json())
@@ -51,12 +51,15 @@ const mealIngredientsDetailsAdd = mealItemName => {
     }
 
     mealDetailsNode.innerHTML = `
-          <div>
-              <img src="${mealItemName.strMealThumb}" >
+          <div id="ingredientsShowStage">
+                <div>
+                    <img src="${mealItemName.strMealThumb}" >
+                    <h4 style="text-align: center; margin-top: 30px;">${mealItemName.strMeal}</h4>
+                </div>
+              
               <div>
-                  <p><h4>${mealItemName.strMeal}</h4></p>
-                  <h5>Ingredients:</h5>
-                  <ul>
+                  <h5 style="margin-left: 50px;">Ingredients:</h5>
+                  <ul style="margin-left: 50px;">
                       ${mealIngredientsDetailsArray.map(ingredient => `<li>${ingredient}</li>`).join('')}
                   </ul>
               </div>
