@@ -5,7 +5,7 @@ document.getElementById("searchButton").addEventListener("click", function(){
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + inputText)
     .then(response => response.json())
     .then(data => displayMeal(data))
-    .catch(err => alert("Could not find the: " + inputText));
+    .catch(err => alert("Could not find the: " + inputText + "\ndue to:\n" + err.message));
 });
 
 function displayMeal(mealItems){
