@@ -1,9 +1,11 @@
+input{
+    text-align: center;
+    margin: 10px 10px;
+    border-radius: 5px;
 
-#firstSectionDiv{
-    display: flex;
-    align-items: center;
 }
 #firstSection{
-    margin: 0% 30%;
-
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 100px;
 }
